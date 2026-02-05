@@ -6,14 +6,14 @@ import {
     DialogContent,
     DialogHeader,
     DialogTitle,
-    DialogDescription
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Copy, Check, Upload, Loader2 } from "lucide-react";
+import { Upload, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { sendDonationAction } from "@/app/actions/send-donation";
+import Scanner from "../app/scanner.png"
 
 interface DonationModalProps {
     isOpen: boolean;
@@ -26,12 +26,12 @@ export const DonationModal = ({ isOpen, onOpenChange }: DonationModalProps) => {
     const fileInputRef = useRef<HTMLInputElement>(null);
     const [fileName, setFileName] = useState<string | null>(null);
 
-    const bankDetails = [
-        { label: "Bank Name", value: "Punjab National Bank (PNB)" },
-        { label: "Account Holder", value: "Punyam Foundation" },
-        { label: "Account Number", value: "4972002100005820" },
-        { label: "IFSC Code", value: "PUNB0497200" },
-    ];
+    // const bankDetails = [
+    //     { label: "Bank Name", value: "Punjab National Bank (PNB)" },
+    //     { label: "Account Holder", value: "Punyam Foundation" },
+    //     { label: "Account Number", value: "4972002100005820" },
+    //     { label: "IFSC Code", value: "PUNB0497200" },
+    // ];
 
     const copyToClipboard = (text: string, label: string) => {
         navigator.clipboard.writeText(text);
@@ -79,7 +79,7 @@ export const DonationModal = ({ isOpen, onOpenChange }: DonationModalProps) => {
 
                 <div className="p-5 max-h-[85vh] overflow-y-auto custom-scrollbar">
                     {/* Bank Details Area */}
-                    <div className="bg-slate-50 rounded-xl p-4 border border-slate-100 space-y-3 mb-6">
+                    {/* <div className="bg-slate-50 rounded-xl p-4 border border-slate-100 space-y-3 mb-6">
                         {bankDetails.map((detail) => (
                             <div key={detail.label} className="flex items-center justify-between group">
                                 <div className="flex items-center gap-2 overflow-hidden">
@@ -99,16 +99,16 @@ export const DonationModal = ({ isOpen, onOpenChange }: DonationModalProps) => {
                                 </button>
                             </div>
                         ))}
-                    </div>
+                    </div> */}
 
                     {/* QR Code Section */}
                     <div className="text-center mb-6">
                         <p className="text-[10px] font-bold text-slate-400 mb-2 uppercase tracking-widest">Scan & Pay</p>
-                        <div className="inline-block p-3 bg-white border border-slate-100 rounded-xl shadow-sm">
+                        <div className="inline-block bg-white border border-slate-100 rounded-xl shadow-sm">
                             <img
-                                src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=upi://pay?pa=7398799789@pnb&pn=Punyam%20Foundation&cu=INR"
+                                src={Scanner.src}
                                 alt="QR Code"
-                                className="w-28 h-28 mx-auto"
+                                className="w-30 h-30 mx-auto"
                             />
                         </div>
                     </div>
@@ -153,7 +153,7 @@ export const DonationModal = ({ isOpen, onOpenChange }: DonationModalProps) => {
 
                         <Button
                             type="submit"
-                            className="w-full bg-[#87befd] hover:bg-[#6fb1ff] text-white font-bold h-11 rounded-lg transition-all mt-4 shadow-sm"
+                            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold h-11 rounded-lg transition-all mt-4 shadow-sm"
                             disabled={isSubmitting}
                         >
                             {isSubmitting ? (
