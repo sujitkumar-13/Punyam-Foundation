@@ -1,12 +1,21 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { Heart, Users } from "lucide-react";
 
 const HeroSection = () => {
+  const scrollToContact = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const element = document.getElementById("contact");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Gradient */}
       <div className="absolute inset-0 gradient-hero opacity-95" />
-      
+
       {/* Decorative Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 left-10 w-64 h-64 rounded-full bg-primary-foreground/20 blur-3xl" />
@@ -18,7 +27,7 @@ const HeroSection = () => {
         <p className="hindi-text text-primary-foreground/90 text-xl md:text-2xl mb-4 animate-fade-in">
           सेवा परमो धर्मः
         </p>
-        
+
         {/* Main Headline */}
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight mb-6 animate-slide-up">
           Service is the
@@ -27,23 +36,24 @@ const HeroSection = () => {
 
         {/* Subtext */}
         <p className="text-lg md:text-xl text-primary-foreground/85 max-w-2xl mx-auto mb-8 leading-relaxed animate-slide-up" style={{ animationDelay: "0.1s" }}>
-          Through selfless service, we earn invisible blessings—<span className="hindi-text">पुण्य</span>. 
+          Through selfless service, we earn invisible blessings—<span className="hindi-text">पुण्य</span>.
           Join us in reaching those who truly need compassion, care, and a helping hand.
         </p>
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-slide-up" style={{ animationDelay: "0.2s" }}>
-          <Button 
-            size="lg" 
+          <Button
+            size="lg"
             className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 shadow-elevated px-8 py-6 text-base font-semibold"
           >
             <Heart className="w-5 h-5 mr-2" />
             Donate Now
           </Button>
-          <Button 
-            size="lg" 
+          <Button
+            size="lg"
             variant="outline"
             className="border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground/10 px-8 py-6 text-base font-semibold bg-transparent"
+            onClick={scrollToContact}
           >
             <Users className="w-5 h-5 mr-2" />
             Join as Volunteer

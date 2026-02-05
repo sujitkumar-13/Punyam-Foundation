@@ -1,7 +1,17 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { Heart, Shield, Eye, CheckCircle } from "lucide-react";
 
 const DonationSection = () => {
+  const scrollToContact = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const element = document.getElementById("contact");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   const trustPoints = [
     {
       icon: Shield,
@@ -24,7 +34,7 @@ const DonationSection = () => {
     <section id="donate" className="section-padding relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 gradient-hero opacity-95" />
-      
+
       {/* Decorative Elements */}
       <div className="absolute top-0 left-0 w-64 h-64 bg-primary-foreground/10 rounded-full blur-3xl" />
       <div className="absolute bottom-0 right-0 w-80 h-80 bg-primary-foreground/10 rounded-full blur-3xl" />
@@ -41,25 +51,26 @@ const DonationSection = () => {
               <span className="hindi-text">पुण्य</span> — Invisible Blessings
             </h2>
             <p className="text-lg text-primary-foreground/85 leading-relaxed">
-              When you give selflessly, you earn merit that transcends this world. 
-              Your donation doesn't just change lives—it transforms your own spirit 
+              When you give selflessly, you earn merit that transcends this world.
+              Your donation doesn't just change lives—it transforms your own spirit
               through the sacred act of giving.
             </p>
           </div>
 
           {/* Donation Options */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Button 
+            <Button
               size="lg"
               className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 shadow-elevated px-8 py-6 text-lg font-semibold"
             >
               <Heart className="w-5 h-5 mr-2" />
               Donate Once
             </Button>
-            <Button 
+            <Button
               size="lg"
               variant="outline"
               className="border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground/10 px-8 py-6 text-lg font-semibold bg-transparent"
+              onClick={scrollToContact}
             >
               Become a Monthly Supporter
             </Button>
@@ -68,7 +79,7 @@ const DonationSection = () => {
           {/* Trust Indicators */}
           <div className="grid sm:grid-cols-3 gap-6">
             {trustPoints.map((point, index) => (
-              <div 
+              <div
                 key={index}
                 className="bg-primary-foreground/10 backdrop-blur-sm rounded-xl p-5"
               >
