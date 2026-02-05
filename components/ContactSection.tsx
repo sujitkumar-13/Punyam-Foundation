@@ -91,21 +91,21 @@ const ContactSection = () => {
 
   return (
     <section id="contact" className="section-padding gradient-subtle">
-      <div className="container-narrow mx-auto">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 md:mb-16">
           <p className="text-primary font-medium mb-2">Contact Us</p>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             Get in <span className="text-gradient">Touch</span>
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-muted-foreground max-w-2xl mx-auto text-sm md:text-base">
             Have questions? Want to volunteer or partner with us? We'd love to hear from you.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Contact Form */}
-          <div className="bg-card rounded-2xl p-8 shadow-card hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-transparent hover:border-primary/10">
+          <div className="bg-card rounded-2xl p-6 md:p-8 shadow-card hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-transparent hover:border-primary/10">
             <h3 className="text-xl font-semibold text-foreground mb-6">Send us a Message</h3>
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>
@@ -185,22 +185,22 @@ const ContactSection = () => {
             {contactInfo.map((info, index) => (
               <div
                 key={index}
-                className="flex items-start gap-4 bg-card rounded-xl p-5 shadow-soft hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-transparent"
+                className="flex items-start gap-3 bg-card rounded-xl p-4 md:p-5 shadow-soft hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-transparent hover:border-primary/10"
               >
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                  <info.icon className="w-6 h-6 text-primary" />
+                <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <info.icon className="w-5 h-5 md:w-6 md:h-6 text-primary" />
                 </div>
-                <div>
-                  <h4 className="font-semibold text-foreground mb-1">{info.title}</h4>
+                <div className="min-w-0 flex-1">
+                  <h4 className="font-semibold text-foreground mb-1 text-sm md:text-base">{info.title}</h4>
                   {info.href ? (
                     <a
                       href={info.href}
-                      className="text-muted-foreground hover:text-primary transition-colors"
+                      className="text-sm md:text-base text-muted-foreground hover:text-primary transition-colors break-all"
                     >
                       {info.content}
                     </a>
                   ) : (
-                    <p className="text-muted-foreground">{info.content}</p>
+                    <p className="text-sm md:text-base text-muted-foreground break-words">{info.content}</p>
                   )}
                 </div>
               </div>
