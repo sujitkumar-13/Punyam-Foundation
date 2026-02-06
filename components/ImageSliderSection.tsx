@@ -35,14 +35,14 @@ const ImageSliderSection = () => {
     return (
         <section className="relative w-full py-16 bg-slate-50">
             <div className="container mx-auto px-4">
-                <div className="text-center mb-10">
-                    <h2 className="text-3xl font-bold text-gray-800 mb-4">Our Gallery</h2>
-                    <p className="text-gray-600 max-w-2xl mx-auto">
+                <div className="text-center mb-6 md:mb-10">
+                    <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-2 md:mb-4">Our Gallery</h2>
+                    <p className="text-sm md:text-base text-gray-600 max-w-2xl mx-auto px-4">
                         Glimpses of our impactful journey and community service.
                     </p>
                 </div>
 
-                <div className="relative w-full max-w-8xl mx-auto h-[400px] md:h-[500px] rounded-2xl overflow-hidden shadow-xl group">
+                <div className="relative w-full max-w-8xl mx-auto h-[250px] sm:h-[350px] md:h-[500px] rounded-xl md:rounded-2xl overflow-hidden shadow-xl group">
                     {bannerImages.map((img, index) => (
                         <div
                             key={img}
@@ -66,18 +66,18 @@ const ImageSliderSection = () => {
                         variant="ghost"
                         size="icon"
                         onClick={prevSlide}
-                        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 rounded-full w-10 h-10 p-0 shadow-lg backdrop-blur-sm transition-all z-10"
+                        className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 rounded-full w-8 h-8 md:w-10 md:h-10 p-0 shadow-lg backdrop-blur-sm transition-all z-10"
                     >
-                        <ChevronLeft className="w-6 h-6" />
+                        <ChevronLeft className="w-4 h-4 md:w-6 md:h-6" />
                     </Button>
 
                     <Button
                         variant="ghost"
                         size="icon"
                         onClick={nextSlide}
-                        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 rounded-full w-10 h-10 p-0 shadow-lg backdrop-blur-sm transition-all z-10"
+                        className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 rounded-full w-8 h-8 md:w-10 md:h-10 p-0 shadow-lg backdrop-blur-sm transition-all z-10"
                     >
-                        <ChevronRight className="w-6 h-6" />
+                        <ChevronRight className="w-4 h-4 md:w-6 md:h-6" />
                     </Button>
 
                     {/* Dots Indicator */}
