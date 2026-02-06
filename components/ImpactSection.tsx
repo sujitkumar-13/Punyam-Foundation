@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import { Heart, Users, FolderOpen, MapPin } from "lucide-react";
+import { ScrollReveal } from "./ui/ScrollReveal";
 
 const ImpactSection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -59,43 +60,44 @@ const ImpactSection = () => {
     <section id="impact" ref={sectionRef} className="section-padding gradient-subtle">
       <div className="container-narrow mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <p className="text-primary font-medium mb-2">Our Impact</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Making a <span className="text-gradient">Difference</span>
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Every number represents a life touched, a family supported, a community strengthened
-          </p>
-        </div>
+        <ScrollReveal animation="fadeIn">
+          <div className="text-center mb-16">
+            <p className="text-primary font-medium mb-2">Our Impact</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Making a <span className="text-gradient">Difference</span>
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Every number represents a life touched, a family supported, a community strengthened
+            </p>
+          </div>
+        </ScrollReveal>
 
         {/* Stats Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {stats.map((stat, index) => (
-            <div
-              key={index}
-              className="bg-card rounded-2xl p-8 text-center shadow-card hover-lift"
-            >
-              <div
-                className={`w-16 h-16 rounded-2xl mx-auto mb-6 flex items-center justify-center ${stat.color === "primary" ? "bg-primary/10" : "bg-secondary/10"
-                  }`}
-              >
-                <stat.icon
-                  className={`w-8 h-8 ${stat.color === "primary" ? "text-primary" : "text-secondary"
-                    }`}
-                />
-              </div>
-              <div className="mb-2">
-                <span
-                  className={`text-4xl md:text-5xl font-bold ${stat.color === "primary" ? "text-primary" : "text-secondary"
+            <ScrollReveal key={index} animation="scaleIn" delay={0.1 * index}>
+              <div className="bg-card rounded-2xl p-8 text-center shadow-card hover-lift">
+                <div
+                  className={`w-16 h-16 rounded-2xl mx-auto mb-6 flex items-center justify-center ${stat.color === "primary" ? "bg-primary/10" : "bg-secondary/10"
                     }`}
                 >
-                  {isVisible ? <AnimatedCounter end={stat.value} /> : 0}
-                  {stat.suffix}
-                </span>
+                  <stat.icon
+                    className={`w-8 h-8 ${stat.color === "primary" ? "text-primary" : "text-secondary"
+                      }`}
+                  />
+                </div>
+                <div className="mb-2">
+                  <span
+                    className={`text-4xl md:text-5xl font-bold ${stat.color === "primary" ? "text-primary" : "text-secondary"
+                      }`}
+                  >
+                    {isVisible ? <AnimatedCounter end={stat.value} /> : 0}
+                    {stat.suffix}
+                  </span>
+                </div>
+                <p className="text-muted-foreground font-medium">{stat.label}</p>
               </div>
-              <p className="text-muted-foreground font-medium">{stat.label}</p>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
 

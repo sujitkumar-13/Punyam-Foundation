@@ -1,4 +1,5 @@
 import { Quote } from "lucide-react";
+import { ScrollReveal } from "./ui/ScrollReveal";
 
 const TestimonialsSection = () => {
   const testimonials = [
@@ -26,43 +27,46 @@ const TestimonialsSection = () => {
     <section className="section-padding bg-background">
       <div className="container-narrow mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <p className="text-primary font-medium mb-2">Stories of Impact</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Voices from the <span className="text-gradient">Community</span>
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Real stories from the people whose lives have been touched by our work
-          </p>
-        </div>
+        <ScrollReveal animation="fadeIn">
+          <div className="text-center mb-16">
+            <p className="text-primary font-medium mb-2">Stories of Impact</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Voices from the <span className="text-gradient">Community</span>
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Real stories from the people whose lives have been touched by our work
+            </p>
+          </div>
+        </ScrollReveal>
 
         {/* Testimonials Grid */}
         <div className="grid md:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
-            <div
-              key={index}
-              className="bg-card rounded-2xl p-8 shadow-soft hover-lift relative"
-            >
-              {/* Quote Icon */}
-              <div className="absolute -top-4 left-8">
-                <div className="w-10 h-10 rounded-full gradient-hero flex items-center justify-center">
-                  <Quote className="w-5 h-5 text-primary-foreground" />
+            <ScrollReveal key={index} animation="scaleIn" delay={0.1 * index} className="h-full">
+              <div
+                className="bg-card rounded-2xl p-8 shadow-soft hover-lift relative h-full"
+              >
+                {/* Quote Icon */}
+                <div className="absolute -top-4 left-8">
+                  <div className="w-10 h-10 rounded-full gradient-hero flex items-center justify-center">
+                    <Quote className="w-5 h-5 text-primary-foreground" />
+                  </div>
+                </div>
+
+                {/* Quote Text */}
+                <p className="text-foreground leading-relaxed mt-4 mb-6 italic">
+                  "{testimonial.quote}"
+                </p>
+
+                {/* Author Info */}
+                <div className="border-t border-border pt-4">
+                  <p className="font-semibold text-foreground">{testimonial.author}</p>
+                  <p className="text-sm text-muted-foreground">
+                    {testimonial.role} • {testimonial.location}
+                  </p>
                 </div>
               </div>
-
-              {/* Quote Text */}
-              <p className="text-foreground leading-relaxed mt-4 mb-6 italic">
-                "{testimonial.quote}"
-              </p>
-
-              {/* Author Info */}
-              <div className="border-t border-border pt-4">
-                <p className="font-semibold text-foreground">{testimonial.author}</p>
-                <p className="text-sm text-muted-foreground">
-                  {testimonial.role} • {testimonial.location}
-                </p>
-              </div>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>

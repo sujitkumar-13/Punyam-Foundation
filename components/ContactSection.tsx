@@ -7,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { MapPin, Mail, Phone, Send, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { sendContactAction } from "@/app/actions/send-contact";
+import { ScrollReveal } from "./ui/ScrollReveal";
 
 const ContactSection = () => {
   const { toast } = useToast();
@@ -93,128 +94,134 @@ const ContactSection = () => {
     <section id="contact" className="section-padding gradient-subtle">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
         {/* Section Header */}
-        <div className="text-center mb-10 md:mb-16">
-          <p className="text-primary font-medium mb-2">Contact Us</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Get in <span className="text-gradient">Touch</span>
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-sm md:text-base">
-            Have questions? Want to volunteer or partner with us? We'd love to hear from you.
-          </p>
-        </div>
+        <ScrollReveal animation="fadeIn">
+          <div className="text-center mb-10 md:mb-16">
+            <p className="text-primary font-medium mb-2">Contact Us</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Get in <span className="text-gradient">Touch</span>
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto text-sm md:text-base">
+              Have questions? Want to volunteer or partner with us? We'd love to hear from you.
+            </p>
+          </div>
+        </ScrollReveal>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Contact Form */}
-          <div className="bg-card rounded-2xl p-6 md:p-8 shadow-card hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-transparent hover:border-primary/10">
-            <h3 className="text-xl font-semibold text-foreground mb-6">Send us a Message</h3>
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div>
-                <Input
-                  name="name"
-                  placeholder="Your Name"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  required
-                  className="bg-background transition-all focus:ring-2 focus:ring-primary/20 hover:border-primary/50"
-                />
-              </div>
-              <div>
-                <Input
-                  name="phone"
-                  type="tel"
-                  placeholder="Phone Number"
-                  value={formData.phone}
-                  onChange={handlePhoneChange}
-                  required
-                  maxLength={15}
-                  className="bg-background transition-all focus:ring-2 focus:ring-primary/20 hover:border-primary/50"
-                />
-              </div>
-              <div>
-                <Input
-                  name="email"
-                  type="email"
-                  placeholder="Your Email"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  required
-                  className="bg-background transition-all focus:ring-2 focus:ring-primary/20 hover:border-primary/50"
-                />
-              </div>
-              <div>
-                <Input
-                  name="subject"
-                  placeholder="Subject"
-                  value={formData.subject}
-                  onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                  required
-                  className="bg-background transition-all focus:ring-2 focus:ring-primary/20 hover:border-primary/50"
-                />
-              </div>
-              <div>
-                <Textarea
-                  name="message"
-                  placeholder="Your Message"
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  required
-                  rows={5}
-                  className="bg-background resize-none transition-all focus:ring-2 focus:ring-primary/20 hover:border-primary/50"
-                />
-              </div>
-              <Button type="submit" className="w-full gradient-cta" disabled={isSubmitting}>
-                {isSubmitting ? (
-                  <>
-                    <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                    Sending...
-                  </>
-                ) : (
-                  <>
-                    <Send className="w-4 h-4 mr-2" />
-                    Send Message
-                  </>
-                )}
-              </Button>
-            </form>
-          </div>
+          <ScrollReveal animation="slideRight" delay={0.2}>
+            <div className="bg-card rounded-2xl p-6 md:p-8 shadow-card hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-transparent hover:border-primary/10">
+              <h3 className="text-xl font-semibold text-foreground mb-6">Send us a Message</h3>
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <div>
+                  <Input
+                    name="name"
+                    placeholder="Your Name"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    required
+                    className="bg-background transition-all focus:ring-2 focus:ring-primary/20 hover:border-primary/50"
+                  />
+                </div>
+                <div>
+                  <Input
+                    name="phone"
+                    type="tel"
+                    placeholder="Phone Number"
+                    value={formData.phone}
+                    onChange={handlePhoneChange}
+                    required
+                    maxLength={15}
+                    className="bg-background transition-all focus:ring-2 focus:ring-primary/20 hover:border-primary/50"
+                  />
+                </div>
+                <div>
+                  <Input
+                    name="email"
+                    type="email"
+                    placeholder="Your Email"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    required
+                    className="bg-background transition-all focus:ring-2 focus:ring-primary/20 hover:border-primary/50"
+                  />
+                </div>
+                <div>
+                  <Input
+                    name="subject"
+                    placeholder="Subject"
+                    value={formData.subject}
+                    onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                    required
+                    className="bg-background transition-all focus:ring-2 focus:ring-primary/20 hover:border-primary/50"
+                  />
+                </div>
+                <div>
+                  <Textarea
+                    name="message"
+                    placeholder="Your Message"
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    required
+                    rows={5}
+                    className="bg-background resize-none transition-all focus:ring-2 focus:ring-primary/20 hover:border-primary/50"
+                  />
+                </div>
+                <Button type="submit" className="w-full gradient-cta" disabled={isSubmitting}>
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-4 h-4 mr-2" />
+                      Send Message
+                    </>
+                  )}
+                </Button>
+              </form>
+            </div>
+          </ScrollReveal>
 
           {/* Contact Info */}
-          <div className="space-y-6">
-            <h3 className="text-xl font-semibold text-foreground mb-6">Contact Information</h3>
+          <ScrollReveal animation="slideLeft" delay={0.4}>
+            <div className="space-y-6">
+              <h3 className="text-xl font-semibold text-foreground mb-6">Contact Information</h3>
 
-            {contactInfo.map((info, index) => (
-              <div
-                key={index}
-                className="flex items-start gap-3 bg-card rounded-xl p-4 md:p-5 shadow-soft hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-transparent hover:border-primary/10"
-              >
-                <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                  <info.icon className="w-5 h-5 md:w-6 md:h-6 text-primary" />
+              {contactInfo.map((info, index) => (
+                <div
+                  key={index}
+                  className="flex items-start gap-3 bg-card rounded-xl p-4 md:p-5 shadow-soft hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-transparent hover:border-primary/10"
+                >
+                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <info.icon className="w-5 h-5 md:w-6 md:h-6 text-primary" />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <h4 className="font-semibold text-foreground mb-1 text-sm md:text-base">{info.title}</h4>
+                    {info.href ? (
+                      <a
+                        href={info.href}
+                        className="text-sm md:text-base text-muted-foreground hover:text-primary transition-colors break-all"
+                      >
+                        {info.content}
+                      </a>
+                    ) : (
+                      <p className="text-sm md:text-base text-muted-foreground break-words">{info.content}</p>
+                    )}
+                  </div>
                 </div>
-                <div className="min-w-0 flex-1">
-                  <h4 className="font-semibold text-foreground mb-1 text-sm md:text-base">{info.title}</h4>
-                  {info.href ? (
-                    <a
-                      href={info.href}
-                      className="text-sm md:text-base text-muted-foreground hover:text-primary transition-colors break-all"
-                    >
-                      {info.content}
-                    </a>
-                  ) : (
-                    <p className="text-sm md:text-base text-muted-foreground break-words">{info.content}</p>
-                  )}
-                </div>
-              </div>
-            ))}
+              ))}
 
-            {/* Map Placeholder */}
-            <div className="bg-card rounded-xl overflow-hidden shadow-soft h-48 flex items-center justify-center border-2 border-dashed border-border hover:shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-primary/30">
-              <div className="text-center text-muted-foreground">
-                <MapPin className="w-8 h-8 mx-auto mb-2 text-primary/50" />
-                <p className="text-sm">Varanasi, Uttar Pradesh</p>
-                <p className="text-xs">The Holy City of India</p>
+              {/* Map Placeholder */}
+              <div className="bg-card rounded-xl overflow-hidden shadow-soft h-48 flex items-center justify-center border-2 border-dashed border-border hover:shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-primary/30">
+                <div className="text-center text-muted-foreground">
+                  <MapPin className="w-8 h-8 mx-auto mb-2 text-primary/50" />
+                  <p className="text-sm">Varanasi, Uttar Pradesh</p>
+                  <p className="text-xs">The Holy City of India</p>
+                </div>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>

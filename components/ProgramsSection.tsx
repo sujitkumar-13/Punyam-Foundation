@@ -1,13 +1,14 @@
-import { 
-  GraduationCap, 
-  Heart, 
-  Users, 
-  Megaphone, 
-  Palette, 
-  Leaf, 
-  Sparkles, 
-  Wrench 
+import {
+  GraduationCap,
+  Heart,
+  Users,
+  Megaphone,
+  Palette,
+  Leaf,
+  Sparkles,
+  Wrench
 } from "lucide-react";
+import { ScrollReveal } from "./ui/ScrollReveal";
 
 const ProgramsSection = () => {
   const programs = [
@@ -65,44 +66,43 @@ const ProgramsSection = () => {
     <section id="programs" className="section-padding bg-background">
       <div className="container-narrow mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <p className="text-primary font-medium mb-2">Our Programs</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            What We <span className="text-gradient">Do</span>
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Comprehensive initiatives designed to uplift communities through education, 
-            healthcare, empowerment, and holistic wellness
-          </p>
-        </div>
+        <ScrollReveal animation="fadeIn">
+          <div className="text-center mb-16">
+            <p className="text-primary font-medium mb-2">Our Programs</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              What We <span className="text-gradient">Do</span>
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Comprehensive initiatives designed to uplift communities through education,
+              healthcare, empowerment, and holistic wellness
+            </p>
+          </div>
+        </ScrollReveal>
 
         {/* Programs Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {programs.map((program, index) => (
-            <div
-              key={index}
-              className="group bg-card rounded-2xl p-6 shadow-soft hover-lift border border-transparent hover:border-primary/20 transition-all"
-            >
-              <div 
-                className={`w-14 h-14 rounded-xl mb-4 flex items-center justify-center transition-all group-hover:scale-110 ${
-                  program.color === "primary" 
-                    ? "bg-primary/10 group-hover:bg-primary/20" 
-                    : "bg-secondary/10 group-hover:bg-secondary/20"
-                }`}
-              >
-                <program.icon 
-                  className={`w-7 h-7 ${
-                    program.color === "primary" ? "text-primary" : "text-secondary"
-                  }`} 
-                />
+            <ScrollReveal key={index} animation="scaleIn" delay={0.05 * index} className="h-full">
+              <div className="group bg-card rounded-2xl p-6 shadow-soft hover-lift border border-transparent hover:border-primary/20 transition-all h-full">
+                <div
+                  className={`w-14 h-14 rounded-xl mb-4 flex items-center justify-center transition-all group-hover:scale-110 ${program.color === "primary"
+                      ? "bg-primary/10 group-hover:bg-primary/20"
+                      : "bg-secondary/10 group-hover:bg-secondary/20"
+                    }`}
+                >
+                  <program.icon
+                    className={`w-7 h-7 ${program.color === "primary" ? "text-primary" : "text-secondary"
+                      }`}
+                  />
+                </div>
+                <h4 className="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
+                  {program.title}
+                </h4>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {program.description}
+                </p>
               </div>
-              <h4 className="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
-                {program.title}
-              </h4>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                {program.description}
-              </p>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>

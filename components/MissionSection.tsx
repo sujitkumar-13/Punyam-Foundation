@@ -1,4 +1,5 @@
 import { Target, Eye, Heart, GraduationCap, Users, Stethoscope } from "lucide-react";
+import { ScrollReveal } from "./ui/ScrollReveal";
 
 const MissionSection = () => {
   const missionItems = [
@@ -34,69 +35,72 @@ const MissionSection = () => {
         {/* Vision & Mission Header */}
         <div className="grid md:grid-cols-2 gap-8 mb-16">
           {/* Vision */}
-          <div className="bg-card rounded-2xl p-8 shadow-card hover-lift">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-12 h-12 rounded-xl gradient-hero flex items-center justify-center">
-                <Eye className="w-6 h-6 text-primary-foreground" />
+          <ScrollReveal animation="slideRight" delay={0.1} className="h-full">
+            <div className="bg-card rounded-2xl p-8 shadow-card hover-lift h-full">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 rounded-xl gradient-hero flex items-center justify-center">
+                  <Eye className="w-6 h-6 text-primary-foreground" />
+                </div>
+                <h3 className="text-2xl font-bold text-foreground">Our Vision</h3>
               </div>
-              <h3 className="text-2xl font-bold text-foreground">Our Vision</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                A world where selfless service is recognized as the highest duty, where
+                every individual has the opportunity to live with dignity, and where
+                compassion bridges the gap between privilege and need.
+              </p>
+              <p className="hindi-text text-primary font-medium mt-4">
+                "सेवा परमो धर्मः"
+              </p>
             </div>
-            <p className="text-muted-foreground leading-relaxed">
-              A world where selfless service is recognized as the highest duty, where 
-              every individual has the opportunity to live with dignity, and where 
-              compassion bridges the gap between privilege and need.
-            </p>
-            <p className="hindi-text text-primary font-medium mt-4">
-              "सेवा परमो धर्मः"
-            </p>
-          </div>
+          </ScrollReveal>
 
           {/* Mission */}
-          <div className="bg-card rounded-2xl p-8 shadow-card hover-lift">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center">
-                <Target className="w-6 h-6 text-secondary-foreground" />
+          <ScrollReveal animation="slideLeft" delay={0.2} className="h-full">
+            <div className="bg-card rounded-2xl p-8 shadow-card hover-lift h-full">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center">
+                  <Target className="w-6 h-6 text-secondary-foreground" />
+                </div>
+                <h3 className="text-2xl font-bold text-foreground">Our Mission</h3>
               </div>
-              <h3 className="text-2xl font-bold text-foreground">Our Mission</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                To serve the marginalized and vulnerable through comprehensive programs
+                in health, education, women empowerment, and elder care—reaching those
+                who are often forgotten but most deserving of compassion.
+              </p>
             </div>
-            <p className="text-muted-foreground leading-relaxed">
-              To serve the marginalized and vulnerable through comprehensive programs 
-              in health, education, women empowerment, and elder care—reaching those 
-              who are often forgotten but most deserving of compassion.
-            </p>
-          </div>
+          </ScrollReveal>
         </div>
 
         {/* Mission Items */}
-        <div className="text-center mb-12">
-          <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-            Core Areas of Focus
-          </h3>
-          <p className="text-muted-foreground max-w-xl mx-auto">
-            Our mission manifests through dedicated programs that address fundamental needs
-          </p>
-        </div>
+        <ScrollReveal animation="fadeIn" delay={0.3}>
+          <div className="text-center mb-12">
+            <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+              Core Areas of Focus
+            </h3>
+            <p className="text-muted-foreground max-w-xl mx-auto">
+              Our mission manifests through dedicated programs that address fundamental needs
+            </p>
+          </div>
+        </ScrollReveal>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {missionItems.map((item, index) => (
-            <div
-              key={index}
-              className="bg-card rounded-xl p-6 text-center shadow-soft hover-lift group"
-            >
-              <div 
-                className={`w-16 h-16 rounded-2xl mx-auto mb-4 flex items-center justify-center transition-transform group-hover:scale-110 ${
-                  item.color === "primary" ? "bg-primary/10" : "bg-secondary/10"
-                }`}
-              >
-                <item.icon 
-                  className={`w-8 h-8 ${
-                    item.color === "primary" ? "text-primary" : "text-secondary"
-                  }`} 
-                />
+            <ScrollReveal key={index} animation="slideUp" delay={0.1 * index}>
+              <div className="bg-card rounded-xl p-6 text-center shadow-soft hover-lift group h-full">
+                <div
+                  className={`w-16 h-16 rounded-2xl mx-auto mb-4 flex items-center justify-center transition-transform group-hover:scale-110 ${item.color === "primary" ? "bg-primary/10" : "bg-secondary/10"
+                    }`}
+                >
+                  <item.icon
+                    className={`w-8 h-8 ${item.color === "primary" ? "text-primary" : "text-secondary"
+                      }`}
+                  />
+                </div>
+                <h4 className="text-lg font-semibold text-foreground mb-2">{item.title}</h4>
+                <p className="text-sm text-muted-foreground">{item.description}</p>
               </div>
-              <h4 className="text-lg font-semibold text-foreground mb-2">{item.title}</h4>
-              <p className="text-sm text-muted-foreground">{item.description}</p>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>
