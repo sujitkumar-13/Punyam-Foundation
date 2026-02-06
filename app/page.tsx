@@ -7,6 +7,7 @@ import ImpactSection from "@/components/ImpactSection";
 import TeamSection from "@/components/TeamSection";
 import DonationSection from "@/components/DonationSection";
 import GetInvolvedSection from "@/components/GetInvolvedSection";
+import ImageSliderSection from "@/components/ImageSliderSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
@@ -24,6 +25,7 @@ export default function Home() {
                 <TeamSection />
                 <DonationSection />
                 <GetInvolvedSection />
+                <ImageSliderSection />
                 <TestimonialsSection />
                 <ContactSection />
             </main>
